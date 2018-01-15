@@ -1,6 +1,6 @@
 package com.firstREST.dao;
 
-import com.firstREST.entity.User;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.ResultType;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -9,8 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 
 @Repository
-public interface Base1101Dao {
-    @Select("Select top 10 * from JL_BASE_1102")
+public interface BaseDao {
+    @Select(value = "Select * from ${table_name} order by id")
     @ResultType(HashMap.class)
-    List<HashMap> getAll();
+    List<HashMap> getAll(@Param("table_name") String tableName);
 }

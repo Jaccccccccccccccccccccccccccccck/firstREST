@@ -1,6 +1,6 @@
 package com.firstREST.service;
 
-import com.firstREST.dao.jlzx.BaseDao;
+import com.firstREST.dao.jlzx.JlzxDao;
 import com.firstREST.dao.localLeftjointest.LeftjointestDao;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -12,20 +12,17 @@ import java.util.HashMap;
 @Service("Base1102Service")
 public class BasePagingService implements PagingService{
     @Autowired
-    private BaseDao baseDao;
+    private JlzxDao jlzxDao;
     @Autowired
     private LeftjointestDao leftjointestDao;
 
     @Override
     public PageInfo<HashMap> selectByPage(String dbName,String tableName,int currentPage, int pageSize){
         if(dbName.equals("leftjointest")){
-            PageHelper.startPage(currentPage, pageSize);
-            return new PageInfo<>(leftjointestDao.getAll(tableName));
-//            PageHelper.setProperties
+            return new PageInfo<>(leftjointestDao.getAll(tableName,currentPage,pageSize));
         }
         else if(dbName.equals("jlzx")){
-            PageHelper.startPage(currentPage, pageSize);
-            return new PageInfo<>(baseDao.getAll(tableName));
+            return new PageInfo<>(jlzxDao.getAll(tableName,currentPage,pageSize));
         }
         return null;
 

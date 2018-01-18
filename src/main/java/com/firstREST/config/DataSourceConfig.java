@@ -1,4 +1,4 @@
-package com.firstREST;
+package com.firstREST.config;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;

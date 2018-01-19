@@ -18,10 +18,10 @@ public class BasePagingService implements PagingService{
 
     @Override
     public PageInfo<HashMap> selectByPage(String dbName,String tableName,int currentPage, int pageSize){
-        if(dbName.equals("leftjointest")){
+        if(dbName.equals("jlzx")){
             return new PageInfo<>(leftjointestDao.getAll(tableName,currentPage,pageSize));
         }
-        else if(dbName.equals("jlzx")){
+        else if(dbName.equals("jlzx1")){
             return new PageInfo<>(jlzxDao.getAll(tableName,currentPage,pageSize));
         }
         return null;
